@@ -57,11 +57,12 @@
                         @else
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('category.index') }}"><i
-                                        class="fas fa-external-link-square-alt"></i> Categorias</a>
+                                <a class="nav-link" href="{{ route('category.index') }}">
+                                    <i class="fas fa-external-link-square-alt"></i> Categorias</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href=""><i class="fas fa-external-link-square-alt"></i> Libros</a>
+                                <a class="nav-link" href="{{ route('book.index') }}">
+                                    <i class="fas fa-external-link-square-alt"></i> Libros</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -70,9 +71,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                                                                                 document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 

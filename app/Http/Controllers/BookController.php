@@ -7,14 +7,35 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $builder = Book::query();
+
+        if ($request->has("buscarPor")) {
+            if ($request->has("valorBusqueda")) {
+                $buscarPor =  $request->input('buscarPor');
+                $valorBusqueda = $request->input('valorBusqueda');
+                if ($buscarPor == 'mostrarTodos') {
+                    $builder = Book::query();
+                } else {
+                    $operador = is_numeric($valorBusqueda) ? '=' : 'like';
+                    $builder->where($buscarPor, $operador, "%$valorBusqueda%");
+                }
+            }
+        }
+        $builder->dd();
+        $books = $builder->paginate();
+
+        return view('Books.index', ['Books' => $books]);
     }
 
     /**
