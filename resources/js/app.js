@@ -7,6 +7,7 @@
 require("./bootstrap");
 
 window.Vue = require("vue");
+window.select2 = require("select2");
 
 /**
  * The following block of code may be used to automatically register your
@@ -54,4 +55,8 @@ const app = new Vue({
                 });
         }
     }
+});
+
+$(document).ready(function() {
+    $(".js-example-basic-single").select2({ placeholder: "Select an option" });
 });

@@ -20,6 +20,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- select2 --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
+
+
 
 </head>
 
@@ -57,11 +62,12 @@
                         @else
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('category.index') }}"><i
-                                        class="fas fa-external-link-square-alt"></i> Categorias</a>
+                                <a class="nav-link" href="{{ route('category.index') }}">
+                                    <i class="fas fa-external-link-square-alt"></i> Categorias</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href=""><i class="fas fa-external-link-square-alt"></i> Libros</a>
+                                <a class="nav-link" href="{{ route('book.index') }}">
+                                    <i class="fas fa-external-link-square-alt"></i> Libros</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -72,7 +78,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
