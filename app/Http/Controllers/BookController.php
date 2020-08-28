@@ -146,4 +146,13 @@ class BookController extends Controller
         alert()->success('Registro eliminado con éxito')->showConfirmButton('Aceptar');
         return redirect()->route('book.index');
     }
+
+    public function updateStatusPrestamo(Request $request)
+    {
+        Book::where('id', '=', $request->id)
+            ->update([
+                'statusPrestamo' => $request->statusPrestamo
+            ]);
+        return response()->json(['message' => 'Estatus actualizado']);
+    }
 }
