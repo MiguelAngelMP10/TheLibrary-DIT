@@ -4,9 +4,10 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require("./bootstrap");
 
-window.Vue = require('vue');
+window.Vue = require("vue");
+window.select2 = require("select2");
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,7 +20,10 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component(
+    "example-component",
+    require("./components/ExampleComponent.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,5 +32,31 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#app',
+    el: "#app",
+    methods: {
+        eliminarRegistro: function(idFormulario) {
+            Swal.fire({
+                title: "¿Está seguro que quiere eliminar el registro?",
+                // text: "Esta operación no se puede revertir",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#1B396A",
+                cancelButtonColor: "#942645",
+                confirmButtonText: "Borrar",
+                cancelButtonText: "Cancelar"
+            })
+                .then(result => {
+                    if (result.value) {
+                        document.getElementById(idFormulario).submit();
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+    }
+});
+
+$(document).ready(function() {
+    $(".js-example-basic-single").select2({ placeholder: "Select an option" });
 });
