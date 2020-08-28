@@ -15,21 +15,21 @@
                                     <div class="col-md-6">
                                         <label class="font-weight-bold col-form-label-lg">id</label>
                                         <div class="input-group input-group-lg">
-                                            <input type="text" class="form-control" value={{ $category->id }}
+                                            <input type="text" class="form-control" value="{{ $category->id }}"
                                                 placeholder="id">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="font-weight-bold col-form-label-lg">Nombre</label>
                                         <div class="input-group input-group-lg">
-                                            <input type="text" class="form-control" value={{ $category->name }}
+                                            <input type="text" class="form-control" value="{{ $category->name }}"
                                                 placeholder="name">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="font-weight-bold col-form-label-lg">Descripción</label>
                                         <div class="input-group input-group-lg">
-                                            <input type="text" class="form-control" value={{ $category->description }}
+                                            <input type="text" class="form-control" value="{{ $category->description }}"
                                                 placeholder="description">
                                         </div>
                                     </div>

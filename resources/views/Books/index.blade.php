@@ -16,7 +16,7 @@
                                 {{ $Books->appends(request()->query())->links() }}
                             </div>
                             <div class="col-4">
-                                <a href="{{ route('category.create') }}" class="btn btn-outline-success">
+                                <a href="{{ route('book.create') }}" class="btn btn-outline-success">
                                     <i class="far fa-plus-square"></i> Nuevo libro
                                 </a>
                             </div>
@@ -76,20 +76,20 @@
                                                 {{ $Books->currentPage() * $Books->perPage() + $loop->iteration - $Books->perPage() }}
                                             </td>
                                             <td class="align-middle text-center">
-                                                <a href="{{ route('category.show', $row) }}"
+                                                <a href="{{ route('book.show', $row) }}"
                                                     class="btn btn-outline-info btn-sm">
                                                     <i class="far fa-eye"></i> Ver
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="{{ route('category.edit', $row) }}"
+                                                <a href="{{ route('book.edit', $row) }}"
                                                     class="btn btn-outline-primary btn-sm">
                                                     <i class="far fa-edit"></i> Editar
                                                 </a>
                                             </td>
                                             <td>
-                                                <form action="{{ route('category.destroy', $row) }}"
-                                                    id="form-{{ $row->id }}" method="POST">
+                                                <form action="{{ route('book.destroy', $row) }}" id="form-{{ $row->id }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('DELETE')
 
@@ -104,8 +104,8 @@
                                             <td>{{ $row->name }}</td>
                                             <td>{{ $row->author }}</td>
                                             <td>{{ $row->publishedDate }}</td>
-                                            <td>{{ $row->category->name }}</td>
-                                            <td>{{ $row->user->name }}</td>
+                                            <td>{{ $row->category_id . ' ' . $row->category->name }}</td>
+                                            <td>{{ $row->user_id . ' ' . $row->user->name }}</td>
                                             <td>{{ $row->statusPrestamo ? 'Prestado' : 'Disponible' }}</td>
                                         </tr>
                                     @endforeach

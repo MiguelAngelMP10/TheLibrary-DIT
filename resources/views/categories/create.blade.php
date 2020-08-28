@@ -43,8 +43,9 @@
                             <div class="row justify-content-md-center p-5">
                                 <a class="btn btn-outline-secondary " href="{{ route('category.index') }}"> <i
                                         class="fas fa-arrow-left"></i> Regresar</a>
-                                <button class="btn btn-outline-primary" type="submit"><i class="far fa-edit"></i>
-                                    Actualizar</button>
+
+                                <button class="btn btn-outline-success" type="submit"><i class="far fa-plus-square"></i>
+                                    guardar</button>
                             </div>
                         </form>
 
