@@ -23,4 +23,3 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('category', 'CategoryController');
 Route::resource('book', 'BookController');
-Route::put('book/updateStatusPrestamo/{id}', 'BookController@updateStatusPrestamo');

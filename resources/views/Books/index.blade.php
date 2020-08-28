@@ -59,11 +59,11 @@
                                 <thead>
                                     <tr>
                                         <th class="align-middle text-center" scope="col">#</th>
-                                        <th class="align-middle text-center" scope="col" colspan="4">Opciones</th>
+                                        <th class="align-middle text-center" scope="col" colspan="3">Opciones</th>
                                         <th class="align-middle text-center" scope="col">Id</th>
                                         <th class="align-middle text-center" scope="col">Nombre</th>
                                         <th class="align-middle text-center" scope="col">Autor</th>
-                                        <th class="align-middle text-center" scope="col">Fecha Publicacion</th>
+                                        <th class="align-middle text-center" scope="col">FechaPublicacion</th>
                                         <th class="align-middle text-center" scope="col">Categoria</th>
                                         <th class="align-middle text-center" scope="col">Usuario</th>
                                         <th class="align-middle text-center" scope="col">Estado de prestamo</th>
@@ -99,12 +99,6 @@
                                                 </form>
                                             </td>
                                             <td>
-                                                <a class="btn btn-outline-dark btn-sm"
-                                                    v-on:click="mostrarModal('{{ $row->id }}', '{{ $row->statusPrestamo }}' )">
-                                                    Cambiar estatus
-                                                </a>
-                                            </td>
-                                            <td>
                                                 {{ $row->id }}
                                             </td>
                                             <td>{{ $row->name }}</td>
@@ -124,42 +118,6 @@
             </div>
         </div>
     </div>
-    <div>
 
-        <div class="modal fade bd-example-modal-lg" id="modalStatus" tabindex="-1" role="dialog"
-            aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Cambiar estatus de prestamo</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="radio-disponible" value="0" name="estatusPrestamo"
-                                    class="custom-control-input">
-                                <label class="custom-control-label" for="radio-disponible">Disponible</label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="radio-prestado" value="1" name="estatusPrestamo"
-                                    class="custom-control-input">
-                                <label class="custom-control-label" for="radio-prestado">Prestado</label>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer align-items-center">
-                        <button type="button" v-on:click="cambiarStatusPrestamo()" class="btn btn-outline-success"><i
-                                class="far fa-save"></i>
-                            Guardar</button>
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i
-                                class="fas fa-times"></i>
-                            Cancelar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-    @endsection
+@endsection

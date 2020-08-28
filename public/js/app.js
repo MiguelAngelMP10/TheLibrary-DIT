@@ -55844,9 +55844,6 @@ Vue.component("example-component", __webpack_require__(/*! ./components/ExampleC
 
 var app = new Vue({
   el: "#app",
-  data: {
-    idBook: ""
-  },
   methods: {
     eliminarRegistro: function eliminarRegistro(idFormulario) {
       Swal.fire({
@@ -55861,50 +55858,6 @@ var app = new Vue({
       }).then(function (result) {
         if (result.value) {
           document.getElementById(idFormulario).submit();
-        }
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    mostrarModal: function mostrarModal(idBook, status) {
-      this.idBook = idBook;
-
-      if (parseInt(status) == 1) {
-        document.getElementById("radio-prestado").checked = true;
-      } else {
-        document.getElementById("radio-disponible").checked = true;
-      }
-
-      $("#modalStatus").modal("show");
-    },
-    cambiarStatusPrestamo: function cambiarStatusPrestamo() {
-      var _this = this;
-
-      var status = document.querySelector("input[name=estatusPrestamo]:checked").value;
-      Swal.fire({
-        title: "¿Está seguro que cambiar el status del prestamo?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Si",
-        cancelButtonText: "Cancelar"
-      }).then(function (result) {
-        if (result.value) {
-          var link = "book/updateStatusPrestamo/".concat(_this.idBook);
-          axios.put(link, {
-            statusPrestamo: status
-          }).then(function (response) {
-            Swal.fire({
-              icon: "success",
-              title: response.data.message
-            }).then(function (result) {
-              if (result.value) {
-                location.reload();
-              }
-            });
-          })["catch"](function (e) {
-            console.log(e);
-          });
-          $("#modalStatus").modal("hide");
         }
       })["catch"](function (error) {
         console.log(error);

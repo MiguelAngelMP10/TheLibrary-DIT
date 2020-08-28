@@ -33,9 +33,6 @@ Vue.component(
 
 const app = new Vue({
     el: "#app",
-    data: {
-        idBook: ""
-    },
     methods: {
         eliminarRegistro: function(idFormulario) {
             Swal.fire({
@@ -51,54 +48,6 @@ const app = new Vue({
                 .then(result => {
                     if (result.value) {
                         document.getElementById(idFormulario).submit();
-                    }
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        },
-        mostrarModal: function(idBook, status) {
-            this.idBook = idBook;
-            if (parseInt(status) == 1) {
-                document.getElementById("radio-prestado").checked = true;
-            } else {
-                document.getElementById("radio-disponible").checked = true;
-            }
-            $("#modalStatus").modal("show");
-        },
-        cambiarStatusPrestamo: function() {
-            let status = document.querySelector(
-                "input[name=estatusPrestamo]:checked"
-            ).value;
-
-            Swal.fire({
-                title: "¿Está seguro que cambiar el status del prestamo?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Si",
-                cancelButtonText: "Cancelar"
-            })
-                .then(result => {
-                    if (result.value) {
-                        let link = `book/updateStatusPrestamo/${this.idBook}`;
-                        axios
-                            .put(link, {
-                                statusPrestamo: status
-                            })
-                            .then(response => {
-                                Swal.fire({
-                                    icon: "success",
-                                    title: response.data.message
-                                }).then(result => {
-                                    if (result.value) {
-                                        location.reload();
-                                    }
-                                });
-                            })
-                            .catch(e => {
-                                console.log(e);
-                            });
-                        $("#modalStatus").modal("hide");
                     }
                 })
                 .catch(error => {
